@@ -37,3 +37,13 @@ def get_ship_location():
 
     return int(row) - 1, let_to_num[column]
 
+# Function that creatrs the ships
+
+
+def create_ships(board):
+    for ship in range(5):
+        ship_r, ship_ci = randint(0, 7), randint(0, 7)
+        while board[ship_r][ship_ci] == "X":
+            ship_r, ship_ci = randint(0, 7), randint(0, 7)
+        board[ship_r][ship_ci] = "X"
+
