@@ -47,3 +47,12 @@ def create_ships(board):
             ship_r, ship_ci = randint(0, 7), randint(0, 7)
         board[ship_r][ship_ci] = "X"
 
+
+def count_hit_ships(board):
+    count = 0
+    for row in board:
+        for column in row:
+            if column == "X":
+                count += 1
+
+    return count
