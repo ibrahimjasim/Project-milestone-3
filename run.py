@@ -56,3 +56,35 @@ def count_hit_ships(board):
                 count += 1
 
     return count
+
+
+create_ships(Hidden_Pattern)
+# Print_board(hidden_pattern)
+
+turns = 10
+
+while turns > 0:
+    print("Welcome to Battleship")
+    print_board(Guess_Pattern)
+    row, column = get_ship_location()
+
+    if Guess_Pattern[row][column] == "-":
+        print("You already guessed that.")
+    elif Hidden_Pattern[row][column] == "X":
+        print("Congratulations! You hit a battleship.")
+        Guess_Pattern[row][column] = "X"
+        turns -= 1
+    else:
+        print("Sorry, you missed.")
+        Guess_Pattern[row][column] = "-"
+        turns -= 1
+
+    if count_hit_ships(Guess_Pattern) == 5:
+        print("Congratulations! You have sunk all the battleships.")
+        break
+
+    print("You have " + str(turns) + " turns remaining.")
+
+    if turns == 0:
+        print("Game Over")
+        break
