@@ -1,32 +1,61 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleship game
+![snip 1](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/be0cba73-ad66-4913-a206-2916085620fb)
 
-Welcome,
+The game Battleship is a Python terminal game that revolves around two players trying to strategically guess and locate the positions of the opponent's ships while keeping the positions of ones own ships hidden. The game is typically played on a grid-based board in which each battleship occupies one square on the grid. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+## How to play
 
-## Reminders
+Each player has their own grid board. The board in this version is an 8x8 grid and each player's ships are positioned in random squares on the grid. The size and number of ships can vary in the traditional game, however, in this project 5 ships were placed on each player's board.
+Taking turns, each players attempts to locate and sink their opponent's ships. The player selects a cell on their opponent's board using coordinates (e.g., "B-5" or "F-9"). The selected position is either a hit (marked: X) or a miss (marked:-).
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+The game continues for 10 rounds with the winner being the player who successfully manages to sink the highest number of ships on the oppnont's board. 
 
-## Creating the Heroku app
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+- Random board generation: 
+  -    The ships are randomly placed on the board.
+  -    The ships are hidden.
+  -    The only option available is playing against the computer.
+  -    The inputs are limited to (1-8) and (A-H), with each coordinate representing a cell on the grid.
+  -    The previous guesses are visible on a grid.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+![snip2](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/6be9427b-3c0c-4342-9650-72d4570dcb45)
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
+-  Input validation and error checking: 
+-  Only coordinates corresponding to cells within the range of (1-8 and A-H) result in a succesful guess.
+-  Each guess is only concidered valid once.
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Testing
 
----
+- I have manually tested the project by following these steps:
+  -  Code successfully passed through a PEP8 linter.
+  -  Deliberatly guessing invalid inputs for:
+      - Positions outside the grid.
+        
+     ![snip4](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/27b5e214-4e92-4494-ab1f-1e88068c42e8)
 
-Happy coding!
+      - Repeating the same guess.
+        
+     ![snip3](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/0fe0e8ea-f026-457b-937b-e129d051d915)
+
+-  Used CI's Heroku terminal for testing.
+  
+  ![snip5](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/a310a1a2-4b65-4f37-9596-6fca1eb1bbd1)
+
+
+
+## Bugs
+- No known bugs.
+
+
+# Validator testing
+- No errors detected from PEP8online.com
+
+
+## Credits
+- CI material for the given project.
+- Wikipedia for rules and logic behind the game.
+- Used "copyassignment" as inspiration for functctions.
