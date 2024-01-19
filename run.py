@@ -47,12 +47,13 @@ def get_computer_location():
     return randint(0, 7), randint(0, 7)
 
 
-def create_ships(board):
-    for _ in range(5):
-        ship_r, ship_cl = randint(0, 7), randint(0, 7)
-        while board[ship_r][ship_cl] == 'X':
-            ship_r, ship_cl = randint(0, 7), randint(0, 7)
-        board[ship_r][ship_cl] = 'X'
+# Function to create ships on the board with variable difficulty
+def create_ships(board, num_ships):
+    for _ in range(num_ships):
+        ship_row, ship_col = randint(0, 7), randint(0, 7)
+        while board[ship_row][ship_col] == 'X':
+            ship_row, ship_col = randint(0, 7), randint(0, 7)
+        board[ship_row][ship_col] = 'X'
 
 
 def count_hit_ships(board):
