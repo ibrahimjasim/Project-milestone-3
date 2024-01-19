@@ -41,10 +41,10 @@ def get_ship_location():
             print("An error occurred: ", e)
 
 
+
+# Function to get a random location for the computer's turn
 def get_computer_location():
-    row = randint(0, 7)
-    column = randint(0, 7)
-    return row, column
+    return randint(0, 7), randint(0, 7)
 
 
 def create_ships(board):
