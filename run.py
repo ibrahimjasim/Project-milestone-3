@@ -56,13 +56,9 @@ def create_ships(board, num_ships):
         board[ship_row][ship_col] = 'X'
 
 
+# Function to count the number of hit ships
 def count_hit_ships(board):
-    count = 0
-    for row in board:
-        for column in row:
-            if column == 'X':
-                count += 1
-    return count
+    return sum(row.count('X') for row in board)
 
 
 def play_battleship():
