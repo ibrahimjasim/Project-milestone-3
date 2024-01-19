@@ -10,13 +10,16 @@ Computer_Guess_Pattern = [[' '] * 8 for _ in range(8)]
 # Mappings for columns
 let_to_num = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
-def print_board(board):
-    print('   A B C D E F G H')
-    print('   ***************')
-    row_num = 0
-    for row in board:
-        print("%d|%s|" % (row_num + 1, "|".join(row)))
-        row_num += 1
+
+# Function to print two game boards side by side
+def print_boards(board1, board2, board1_title="Your Guesses", board2_title="Computer's Guesses"):
+    print(f'{board1_title:20s}    {board2_title}')
+    print('   A B C D E F G H      A B C D E F G H')
+    print('   ****************     ****************')
+    for row_num in range(8):
+        row1 = " ".join(board1[row_num])
+        row2 = " ".join(board2[row_num])
+        print(f"{row_num + 1}|{row1}|    {row_num + 1}|{row2}|")
 
 
 def get_ship_location():
