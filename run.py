@@ -60,32 +60,37 @@ def create_ships(board, num_ships):
 def count_hit_ships(board):
     return sum(row.count('X') for row in board)
 
-
+# Main function to play the game
 def play_battleship():
-    create_ships(Hidden_Pattern)
+    print('Welcome to Battleship')
+
+    # Setting different difficulties: 5 ships for player, 3 ships for computer
+    create_ships(Player_Hidden_Pattern, 5)
+    create_ships(Computer_Hidden_Pattern, 5)
     turns = 10
+    player_hits = 0
+    computer_hits = 0
 
     while turns > 0:
-        print('Welcome to Battleship')
-        print_board(Guess_Pattern)
+        print_boards(Player_Guess_Pattern, Computer_Guess_Pattern)
         print()
 
         # Player's turn
         row, column = get_ship_location()
 
-        if Guess_Pattern[row][column] == '-':
+        if Player_Guess_Pattern[row][column] == '-':
             print('You already guessed that.')
-        elif Hidden_Pattern[row][column] == 'X':
+        elif Computer_Hidden_Pattern[row][column] == 'X':
             print('Congratulations! You hit a battleship!')
-            Guess_Pattern[row][column] = 'X'
-            turns -= 1
+            Player_Guess_Pattern[row][column] = 'X'
+            player_hits += 1
         else:
             print('Sorry, you missed.')
-            Guess_Pattern[row][column] = '-'
-            turns -= 1
+            Player_Guess_Pattern[row][column] = '-'
+        turns -= 1
 
-        if count_hit_ships(Guess_Pattern) == 5:
-            print("Congratulations! You have sunk all the battleships.")
+        if player_hits == 5:  # Win condition based on computer's ships
+            print("Congratulations! You have sunk all the computer's battleships.")
             break
 
         print('You have ' + str(turns) + ' turns remaining.')
@@ -94,29 +99,28 @@ def play_battleship():
         # Computer's turn
         comp_row, comp_column = get_computer_location()
 
-        if Guess_Pattern[comp_row][comp_column] == '-':
-            print("The computer already guessed that.")
-        elif Hidden_Pattern[comp_row][comp_column] == 'X':
+        if Computer_Guess_Pattern[comp_row][comp_column] in ['X', '-']:
+            continue
+        elif Player_Hidden_Pattern[comp_row][comp_column] == 'X':
             print("Oh no! The computer hit your battleship!")
-            Guess_Pattern[comp_row][comp_column] = 'X'
-            turns -= 1
+            Computer_Guess_Pattern[comp_row][comp_column] = 'X'
+            computer_hits += 1
         else:
-            print("Phew! The computer missed.")
-            Guess_Pattern[comp_row][comp_column] = '-'
-            turns -= 1
+            print("The computer missed!")
+            Computer_Guess_Pattern[comp_row][comp_column] = '-'
 
-        if count_hit_ships(Guess_Pattern) == 5:
-            print("Congratulations! You have sunk all the battleships.")
+        if computer_hits == 5:  # Computer's win condition
+            print("Oh no! The computer has sunk all your battleships.")
             break
 
-        print('You have ' + str(turns) + ' turns remaining.')
-        print()
-
-        if turns == 0:
-            print('Game Over')
-
-    print('Hidden Pattern:')
-    print_board(Hidden_Pattern)
-
+    if turns == 0:
+        print('Game Over')
+        print_boards(Player_Guess_Pattern, Computer_Guess_Pattern)
+        if player_hits > computer_hits:
+            print("Congratulations! You have won with more hits.")
+        elif computer_hits > player_hits:
+            print("Oh no! The computer has won with more hits.")
+        else:
+            print("It's a tie based on hits!")
 
 play_battleship()
