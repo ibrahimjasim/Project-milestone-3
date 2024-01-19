@@ -22,20 +22,23 @@ def print_boards(board1, board2, board1_title="Your Guesses", board2_title="Comp
         print(f"{row_num + 1}|{row1}|    {row_num + 1}|{row2}|")
 
 
+# Function to get the ship location from the player
 def get_ship_location():
-    # Enter the row number between 1 to 8
-    row = input('Please enter a ship row (1-8): ').upper()
-    while row not in '12345678':
-        print("Please enter a valid row.")
-        row = input('Please enter a ship row (1-8): ')
+    while True:
+        try:
+            row = input('Please enter a ship row (1-8): ')
+            if row not in '12345678':
+                print("Please enter a valid row.")
+                continue
 
-    # Enter the Ship column from A to H
-    column = input('Please enter a ship column (A-H): ').upper()
-    while column not in 'ABCDEFGH':
-        print("Please enter a valid column.")
-        column = input('Please enter a ship column (A-H): ')
+            column = input('Please enter a ship column (A-H): ').upper()
+            if column not in 'ABCDEFGH':
+                print("Please enter a valid column.")
+                continue
 
-    return int(row) - 1, let_to_num[column]
+            return int(row) - 1, let_to_num[column]
+        except Exception as e:
+            print("An error occurred: ", e)
 
 
 def get_computer_location():
