@@ -62,11 +62,22 @@ The game Battleship is a Python terminal game that revolves around two players t
 
 
 
-# Validator testing
+## Validator testing
 - No errors detected from PEP8online.com
 ![CI Python Linter - Google Chrome 2024-01-19 20_27_54](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/ad7809b2-9943-45c9-a4d9-c87c6a11025c)
 
 
+## Perfomance Testing
+
+![Screenshot 2024-01-19 205445](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/726a7962-f85e-4277-b3d8-4747b6f330de)
+
+
+## Deployment steps 
+* Pushed the final project to GitHub
+* Created a new Heroku app
+* Set the buildpacks to `Python` and `NodeJS` in that order 
+* Connect GitHub as my Deployment method
+* Then scroll down to Manual deploy then pressed the Deploy Bransh button 
 
 
 ## Bugs
