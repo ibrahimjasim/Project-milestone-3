@@ -43,6 +43,11 @@ The game Battleship is a Python terminal game that revolves around two players t
 ![Screenshot 2024-01-20 110858](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/7c601e85-4802-44a9-a9cd-2f765ab415b7)
 
 
+## Wireframe 
+![Blank diagram](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/2b597f57-ba47-4ba7-936d-f9276c38dfb7)
+
+
+
 ## Error Testing
 
 | Verified |  Tested Variables | Description of output |
