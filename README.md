@@ -40,14 +40,7 @@ The game Battleship is a Python terminal game that revolves around two players t
 -  **Randomized AI Behavior:** The computer's guesses are randomized, providing an unpredictable opponent.
 
 
-![snip2](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/6be9427b-3c0c-4342-9650-72d4570dcb45)
-
-
-
-
--  Input validation and error checking: 
--  Only coordinates corresponding to cells within the range of (1-8 and A-H) result in a succesful guess.
--  Each guess is only concidered valid once.
+![Screenshot 2024-01-20 110858](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/7c601e85-4802-44a9-a9cd-2f765ab415b7)
 
 
 ## Error Testing
@@ -57,25 +50,17 @@ The game Battleship is a Python terminal game that revolves around two players t
 | - [x] | Input random charachters/ space **once** instetad of accepted input data | Program replies with consistent *"Please enter a valid row"* |
 | - [x] | Input random charachters/ space **twice** instetad of accepted input data | Program reples with consistent *"Please enter a valid row"* |
 | - [x] | Input random charachters/ space **multiple times** instetad of accepted input data | Program replies with consistent *"Please enter a valid row"* |
-| - [x] | Computer waits for its turn | After finishing the 10 rounds as a player, the compiter had played 9 rounds. Game tied. |
 | - [x] | Correct cell is selected | Selecting **8-C** results in the selected cell to be hit. |
-| - [x] | Guessing outside grid | Selecting **9-M** results in reply: *"Please enter a valid row"*  |
+| - [x] | Guessing same target twice | Selecting **8-C**  twice results in reply: *"You already guessed that"* |
+| - [x] | Guessing outside grid | Selecting **9-M** results in reply: *"Please enter a valid row"* |
+| - [x] | Computer waits for its turn | After finishing the 10 rounds as a player, the compiter had played 9 rounds. Game tied. |
 
 
-- I have manually tested the project by following these steps:
-  -  Code successfully passed through a PEP8 linter.
-  -  Deliberatly guessing invalid inputs for:
-      - Positions outside the grid.
-        
-     ![snip4](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/27b5e214-4e92-4494-ab1f-1e88068c42e8)
 
-      - Repeating the same guess.
-        
-     ![snip3](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/0fe0e8ea-f026-457b-937b-e129d051d915)
+# Validator testing
+- No errors detected from PEP8online.com
+![CI Python Linter - Google Chrome 2024-01-19 20_27_54](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/ad7809b2-9943-45c9-a4d9-c87c6a11025c)
 
--  Used CI's Heroku terminal for testing.
-  
-  ![snip5](https://github.com/ibrahimjasim/Project-milestone-3/assets/127301769/a310a1a2-4b65-4f37-9596-6fca1eb1bbd1)
 
 
 
@@ -83,11 +68,11 @@ The game Battleship is a Python terminal game that revolves around two players t
 - No known bugs.
 
 
-# Validator testing
-- No errors detected from PEP8online.com
+
 
 
 ## Credits
 - CI material for the given project.
 - Wikipedia for rules and logic behind the game.
 - Used "copyassignment" as inspiration for functctions.
+- 
