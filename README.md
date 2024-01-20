@@ -54,11 +54,12 @@ The game Battleship is a Python terminal game that revolves around two players t
 
 | Verified |  Tested Variables | Description of output |
 | ----------- | ----------- |----------- |
-| - [x] | Header | Title |
-| - [x] | Paragraph | Text |
-| - [x] | Paragraph | Text |
-| - [x] | Paragraph | Text |
-| - [x] | Paragraph | Text |
+| - [x] | Input random charachters/ space **once** instetad of accepted input data | Program replies with consistent *"Please enter a valid row"* |
+| - [x] | Input random charachters/ space **twice** instetad of accepted input data | Program reples with consistent *"Please enter a valid row"* |
+| - [x] | Input random charachters/ space **multiple times** instetad of accepted input data | Program replies with consistent *"Please enter a valid row"* |
+| - [x] | Computer waits for its turn | After finishing the 10 rounds as a player, the compiter had played 9 rounds. Game tied. |
+| - [x] | Correct cell is selected | Selecting **8-C** results in the selected cell to be hit. |
+| - [x] | Guessing outside grid | Selecting **9-M** results in reply: *"Please enter a valid row"*  |
 
 
 - I have manually tested the project by following these steps:
