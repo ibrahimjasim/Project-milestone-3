@@ -85,9 +85,11 @@ The game Battleship is a Python terminal game that revolves around two players t
 
 
 ## Bugs
-- No known bugs.
+* hitting enter for the first two inputs causes it to break - entering in two letters also causes it to crash - same with entering in two numbers - entering in a lower case is not acepted a second time round if the first column entry was     invalid
+* game increments one of my turns when the computer plays
 
-
+## Remaining Bugs
+* No bugs remaining
 
 
 
