@@ -5,6 +5,8 @@ def initialize_game_boards():
     '''
         Initialize game boards before the game
     '''
+
+    # create 4 boards with empty spaces 8x8 grid
     player_hidden_pattern = [[' '] * 8 for _ in range(8)]
     player_guess_pattern = [[' '] * 8 for _ in range(8)]
     computer_hidden_pattern = [[' '] * 8 for _ in range(8)]
@@ -31,9 +33,13 @@ def print_boards(board1, board2,
             prints the title of two boards and then the boards themselves
 
     '''
+
+    # print the board title side by side
     print(f'{board1_title:20s}    {board2_title}')
     print('   A B C D E F G H      A B C D E F G H')
     print('   ****************     ****************')
+
+    # print the characters in the locations of the boards
     for row_num in range(8):
         row1 = " ".join(board1[row_num])
         row2 = " ".join(board2[row_num])
@@ -50,6 +56,8 @@ def get_row_from_user():
 
     while True:
         row = input('Please enter a ship row (1-8): ')
+
+        # if the user does not enter correct row value, get the value again
         if row not in ['1', '2', '3', '4', '5', '6', '7', '8']:
             print("Please enter a valid row ( 1<= row <= 8 ) ")
             continue
@@ -72,6 +80,8 @@ def get_col_from_user():
 
     while True:
         column = input('Please enter a ship column (A-H): ').upper()
+
+        # if the user does not enter correct column value, get the value again
         if column not in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
             print("Please enter a valid column ( A <= column <= H ) ")
             continue
@@ -84,6 +94,7 @@ def get_computer_location():
         Get the location choosen by the computer. This location
         is randomly decided.
     '''
+    # select a random number
     return randint(0, 7), randint(0, 7)
 
 
@@ -93,6 +104,8 @@ def create_ships(board, num_ships):
 
         input : number of ships to be placed on the board.
     '''
+
+    # place the ships on the board randomly
     for _ in range(num_ships):
         ship_row, ship_col = randint(0, 7), randint(0, 7)
         while board[ship_row][ship_col] == 'X':
@@ -106,6 +119,8 @@ def count_hit_ships(board):
 
         input : board to count the hit number of ships
     '''
+
+    # calculate the hit count by counting X on the board
     return sum(row.count('X') for row in board)
 
 
@@ -130,6 +145,7 @@ def handle_user_turn(
     row = get_row_from_user()
     column = get_col_from_user()
 
+    # decide the next step based on the user input
     if player_guess_pattern[row][column] == '-':
         print('You already guessed that.')
     elif computer_hidden_pattern[row][column] == 'X':
@@ -173,6 +189,7 @@ def handle_computer_turn(
 
     comp_row, comp_column = get_computer_location()
 
+    # decide the next step based on the comp_guess value
     if computer_guess_pattern[comp_row][comp_column] == '-':
         print('You guessed an already guessed location.')
     elif player_hidden_pattern[comp_row][comp_column] == 'X':
@@ -208,6 +225,7 @@ def game_over_condition_handler(
 
     '''
 
+    # see if the game is over or not
     if turns == 0:
         print('Game Over')
         print_boards(player_guess_pattern, computer_guess_pattern)
@@ -223,6 +241,7 @@ def restart_condition_handler():
     '''
         Check whether the user want to play another game.
     '''
+
 
     while True:
         user_input = input("Do you want to play another game (y/n) ? ").upper()
@@ -263,6 +282,7 @@ def play_one_battleship_game():
         print_boards(player_guess_pattern, computer_guess_pattern)
         print()
 
+        # player turn
         player_hits, player_win_condition = handle_user_turn(
             player_guess_pattern,
             computer_hidden_pattern,
