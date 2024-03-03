@@ -106,6 +106,7 @@ def count_hit_ships(board):
     '''
     return sum(row.count('X') for row in board)
 
+
 def handle_user_turn(
         player_guess_pattern,
         computer_hidden_pattern,
@@ -187,6 +188,7 @@ def handle_computer_turn(
 
     return computer_hits,computer_win_conditon
 
+
 def game_over_condition_handler(
         turns,
         player_guess_pattern,
@@ -216,6 +218,7 @@ def game_over_condition_handler(
         else:
             print("It's a tie based on hits!")
 
+
 def restart_condition_handler():
     '''
         Check whether the user want to play another game.
@@ -231,9 +234,10 @@ def restart_condition_handler():
             else:
                 return False
 
-def play_battleship():
+
+def play_one_battleship_game():
     '''
-        Main driver of the game
+        This function allow the user to play one battleship game
     '''
 
     # initialize game boards for both player and computer
@@ -251,13 +255,15 @@ def play_battleship():
     create_ships(player_hidden_pattern, number_of_ships)
     create_ships(computer_hidden_pattern, number_of_ships)
 
+    print_boards(player_hidden_pattern,computer_hidden_pattern)
+
     print('Welcome to Battleship')
     print('=====================')
     while turns > 0:
         print_boards(player_guess_pattern, computer_guess_pattern)
         print()
 
-        player_hits,turns,player_win_condition = handle_user_turn(
+        player_hits,player_win_condition = handle_user_turn(
             player_guess_pattern,
             computer_hidden_pattern,
             number_of_ships,
@@ -287,10 +293,21 @@ def play_battleship():
             computer_guess_pattern,
             player_hits,
             computer_hits)
-        
-        if restart_condition_handler():
-            turns = 10
-    
+
+
+def play_battleship():
+    '''
+        Main driver of the game
+        Allows the user to create a new game as well.
+    '''
+
+    while True:
+        play_one_battleship_game()
+
+        if not restart_condition_handler():
+            print("Good Bye!")
+            break
+
 
 # play the game
 play_battleship()
