@@ -51,7 +51,7 @@ def get_col_from_user():
     '''
 
     # Mappings for columns
-    let_to_num = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
+    letters_to_index_mapping = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
     while True:
         column = input('Please enter a ship column (A-H): ').upper()
@@ -59,7 +59,7 @@ def get_col_from_user():
             print("Please enter a valid column ( A <= column <= H ) ")
             continue
         else:
-            return let_to_num[column]
+            return letters_to_index_mapping[column]
 
 
 def get_computer_location():
@@ -129,10 +129,15 @@ def play_battleship():
         else:
             print('Sorry, you missed.')
             player_guess_pattern[row][column] = '-'
+
         turns -= 1
 
         if player_hits == 5:  # Win condition based on computer's ships
-            print("Congratulations! You have sunk all the computer's battleships.")
+            print(
+                "Congratulations! You have sunk all " + 
+                  "the computer's battleships."
+            )
+            
             break
 
         print('You have ' + str(turns) + ' turns remaining.')
