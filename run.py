@@ -123,4 +123,5 @@ def play_battleship():
         else:
             print("It's a tie based on hits!")
 
+# play the game
 play_battleship()
