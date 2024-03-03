@@ -22,25 +22,23 @@ def print_boards(board1, board2, board1_title="Your Guesses", board2_title="Comp
         print(f"{row_num + 1}|{row1}|    {row_num + 1}|{row2}|")
 
 
-# Function to get the ship location from the player
-def get_ship_location():
+def get_row_from_user():
     while True:
-        try:
-            row = input('Please enter a ship row (1-8): ')
-            if row not in '12345678':
-                print("Please enter a valid row.")
-                continue
+        row = input('Please enter a ship row (1-8): ')
+        if row not in ['1','2','3','4','5','6','7','8']:
+            print("Please enter a valid row(1<= row <= 8)")
+            continue
+        else:
+            return int(row)-1
 
-            column = input('Please enter a ship column (A-H): ').upper()
-            if column not in 'ABCDEFGH':
-                print("Please enter a valid column.")
-                continue
-
-            return int(row) - 1, let_to_num[column]
-        except Exception as e:
-            print("An error occurred: ", e)
-
-
+def get_col_from_user():
+    while True:
+        column = input('Please enter a ship column (A-H): ').upper()
+        if column not in ['A','B','C','D','E','F','G','H']:
+            print("Please enter a valid column(A <= column <= H)")
+            continue
+        else:
+            return let_to_num[column]
 
 # Function to get a random location for the computer's turn
 def get_computer_location():
@@ -76,7 +74,8 @@ def play_battleship():
         print()
 
         # Player's turn
-        row, column = get_ship_location()
+        row = get_row_from_user()
+        column = get_col_from_user()
 
         if Player_Guess_Pattern[row][column] == '-':
             print('You already guessed that.')
