@@ -1,15 +1,5 @@
 from random import randint
 
-
-# Initialize game boards for both player and computer
-player_hidden_pattern = [[' '] * 8 for _ in range(8)]
-player_guess_pattern = [[' '] * 8 for _ in range(8)]
-computer_hidden_pattern = [[' '] * 8 for _ in range(8)]
-computer_guess_pattern = [[' '] * 8 for _ in range(8)]
-
-
-
-
 def print_boards(board1, board2, 
                  board1_title="Your Guesses", board2_title="Computer's Guesses"):
     '''
@@ -50,6 +40,7 @@ def get_row_from_user():
         else:
             return int(row)-1
 
+
 def get_col_from_user():
     '''
         Get the column as a input from the user and then
@@ -70,13 +61,21 @@ def get_col_from_user():
         else:
             return let_to_num[column]
 
-# Function to get a random location for the computer's turn
+
 def get_computer_location():
+    '''
+        Get the location choosen by the computer. This location
+        is randomly decided.
+    '''
     return randint(0, 7), randint(0, 7)
 
 
-# Function to create ships on the board with variable difficulty
 def create_ships(board, num_ships):
+    '''
+        This function places ships on the board randomly.
+
+        input : number of ships to be placed on the board.
+    '''
     for _ in range(num_ships):
         ship_row, ship_col = randint(0, 7), randint(0, 7)
         while board[ship_row][ship_col] == 'X':
@@ -84,12 +83,26 @@ def create_ships(board, num_ships):
         board[ship_row][ship_col] = 'X'
 
 
-# Function to count the number of hit ships
 def count_hit_ships(board):
+    '''
+        Count the number of ships that are hit.
+
+        input : board to count the hit number of ships
+    '''
     return sum(row.count('X') for row in board)
 
-# Main function to play the game
+
 def play_battleship():
+    '''
+        Main driver of the game
+    '''
+
+    # Initialize game boards for both player and computer
+    player_hidden_pattern = [[' '] * 8 for _ in range(8)]
+    player_guess_pattern = [[' '] * 8 for _ in range(8)]
+    computer_hidden_pattern = [[' '] * 8 for _ in range(8)]
+    computer_guess_pattern = [[' '] * 8 for _ in range(8)]
+
     print('Welcome to Battleship')
 
     # Setting different difficulties: 5 ships for player, 3 ships for computer
