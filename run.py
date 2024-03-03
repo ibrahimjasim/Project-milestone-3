@@ -1,5 +1,6 @@
 from random import randint
 
+
 def initialize_game_boards():
     '''
         Initialize game boards before the game
@@ -15,7 +16,7 @@ def initialize_game_boards():
             computer_guess_pattern)
 
 
-def print_boards(board1, board2, 
+def print_boards(board1, board2,
                  board1_title="Your Guesses", board2_title="Computer's Guesses"):
     '''
         Function to print two game boards side by side
@@ -49,7 +50,7 @@ def get_row_from_user():
 
     while True:
         row = input('Please enter a ship row (1-8): ')
-        if row not in ['1','2','3','4','5','6','7','8']:
+        if row not in ['1', '2', '3', '4', '5', '6', '7', '8']:
             print("Please enter a valid row ( 1<= row <= 8 ) ")
             continue
         else:
@@ -66,11 +67,12 @@ def get_col_from_user():
     '''
 
     # Mappings for columns
-    letters_to_index_mapping = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
+    letters_to_index_mapping = {'A': 0, 'B': 1,
+                                'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
     while True:
         column = input('Please enter a ship column (A-H): ').upper()
-        if column not in ['A','B','C','D','E','F','G','H']:
+        if column not in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
             print("Please enter a valid column ( A <= column <= H ) ")
             continue
         else:
@@ -120,14 +122,14 @@ def handle_user_turn(
         computer_hidden_pattern : to identify whether player hit a ship.
         number_of_ships : to decide whether the player has won.
         player_hits : to decide if the player has won and also to update the varaible.
-    
+
     '''
 
     player_win_condition = False
-    
+
     row = get_row_from_user()
     column = get_col_from_user()
-    
+
     if player_guess_pattern[row][column] == '-':
         print('You already guessed that.')
     elif computer_hidden_pattern[row][column] == 'X':
@@ -137,18 +139,18 @@ def handle_user_turn(
 
         if player_hits == number_of_ships:
             print(
-                "Congratulations! You have sunk all " + 
+                "Congratulations! You have sunk all " +
                 "the computer's battleships."
             )
             player_win_condition = True
 
-            return player_hits,player_win_condition
-            
+            return player_hits, player_win_condition
+
     else:
         print('Sorry, you missed.')
         player_guess_pattern[row][column] = '-'
 
-    return player_hits,player_win_condition
+    return player_hits, player_win_condition
 
 
 def handle_computer_turn(
@@ -156,7 +158,6 @@ def handle_computer_turn(
         player_hidden_pattern,
         number_of_ships,
         computer_hits):
-    
     '''
         Handle the player's turn
 
@@ -165,11 +166,11 @@ def handle_computer_turn(
         player_hidden_pattern : to identify whether computer hit a ship.
         number_of_ships : to decide whether the computer has won.
         computer_hits : to decide if the computer has won and also to update the varaible.
-    
+
     '''
-    
+
     computer_win_conditon = False
-    
+
     comp_row, comp_column = get_computer_location()
 
     if computer_guess_pattern[comp_row][comp_column] == '-':
@@ -181,12 +182,12 @@ def handle_computer_turn(
         if computer_hits == number_of_ships:
             print("Oh no! The computer has sunk all your battleships.")
             computer_win_conditon = True
-            return computer_hits,computer_win_conditon
+            return computer_hits, computer_win_conditon
     else:
         print("The computer missed!")
         computer_guess_pattern[comp_row][comp_column] = '-'
 
-    return computer_hits,computer_win_conditon
+    return computer_hits, computer_win_conditon
 
 
 def game_over_condition_handler(
@@ -195,7 +196,6 @@ def game_over_condition_handler(
         computer_guess_pattern,
         player_hits,
         computer_hits):
-    
     '''
         Check whether if the game is over and handles that
 
@@ -205,9 +205,9 @@ def game_over_condition_handler(
         computer_guess_pattern : to print the computer guessing.
         player_hits : to decide the winner
         computer_hits : to decide the winner
-    
+
     '''
-    
+
     if turns == 0:
         print('Game Over')
         print_boards(player_guess_pattern, computer_guess_pattern)
@@ -226,10 +226,10 @@ def restart_condition_handler():
 
     while True:
         user_input = input("Do you want to play another game (y/n) ? ").upper()
-        if user_input not in ["Y","N"]:
+        if user_input not in ["Y", "N"]:
             print("Invalid entry! Please enter y or n")
         else:
-            if user_input=="Y":
+            if user_input == "Y":
                 return True
             else:
                 return False
@@ -241,7 +241,7 @@ def play_one_battleship_game():
     '''
 
     # initialize game boards for both player and computer
-    player_hidden_pattern,player_guess_pattern,computer_hidden_pattern,computer_guess_pattern  = initialize_game_boards()
+    player_hidden_pattern, player_guess_pattern, computer_hidden_pattern, computer_guess_pattern = initialize_game_boards()
 
     # initialize the variables related to one game
     turns = 10
@@ -250,12 +250,12 @@ def play_one_battleship_game():
     computer_hits = 0
     player_win_condition = False
     computer_win_condition = False
-    
+
     # setting different difficulties using number of ships
     create_ships(player_hidden_pattern, number_of_ships)
     create_ships(computer_hidden_pattern, number_of_ships)
 
-    print_boards(player_hidden_pattern,computer_hidden_pattern)
+    print_boards(player_hidden_pattern, computer_hidden_pattern)
 
     print('Welcome to Battleship')
     print('=====================')
@@ -263,12 +263,12 @@ def play_one_battleship_game():
         print_boards(player_guess_pattern, computer_guess_pattern)
         print()
 
-        player_hits,player_win_condition = handle_user_turn(
+        player_hits, player_win_condition = handle_user_turn(
             player_guess_pattern,
             computer_hidden_pattern,
             number_of_ships,
             player_hits)
-        
+
         if player_win_condition:
             break
 
@@ -278,15 +278,15 @@ def play_one_battleship_game():
         print()
 
         # Computer's turn
-        computer_hits,computer_win_condition = handle_computer_turn(
-        computer_guess_pattern,
-        player_hidden_pattern,
-        number_of_ships,
-        computer_hits)
+        computer_hits, computer_win_condition = handle_computer_turn(
+            computer_guess_pattern,
+            player_hidden_pattern,
+            number_of_ships,
+            computer_hits)
 
         if computer_win_condition:
             break
-    
+
         game_over_condition_handler(
             turns,
             player_guess_pattern,
